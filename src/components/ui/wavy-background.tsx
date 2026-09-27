@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 /* eslint-disable no-var */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
@@ -16,7 +15,7 @@ export const WavyBackground = ({
   blur = 10,
   speed = "fast",
   waveOpacity = 0.5,
-  waveYoffset = 250,
+  waveYOffset = 250,
   ...props
 }: {
   children?: any;
@@ -28,6 +27,7 @@ export const WavyBackground = ({
   blur?: number;
   speed?: "slow" | "fast";
   waveOpacity?: number;
+  waveYOffset?: number;
   [key: string]: any;
 }) => {
   const noise = createNoise3D();
@@ -80,7 +80,7 @@ export const WavyBackground = ({
       ctx.strokeStyle = waveColors[i % waveColors.length];
       for (x = 0; x < w; x += 5) {
         var y = noise(x / 800, 0.3 * i, nt) * 100;
-        ctx.lineTo(x, y + waveYoffset);
+        ctx.lineTo(x, y + waveYOffset);
       }
       ctx.stroke();
       ctx.closePath();
